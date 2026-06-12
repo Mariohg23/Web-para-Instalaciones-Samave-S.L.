@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politica de Calidad | Instalaciones Samave S.L.</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="../images/logo.jpg" alt="SAMAVE" class="logo">
+        </div>
+        
+        <button class="menu-toggle" aria-label="Abrir menú">
+            <span class="hamburger"></span>
+        </button>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="../index.html">Quiénes Somos</a></li>
+                <li><a href="../servicios/servicios.html">Qué Podemos Ofrecerle</a></li>
+                <li><a href="../ambitos/ambitos.html">Ambitos de Actuación</a></li>
+                <li><a href="../contacto/contacto.html">Contacto</a></li>
+                <li><a href="../calidad/calidad.html" class="active">Politica de Calidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="about-section">
+            <h2>Qué Podemos Ofrecerle</h2>
+            
+            <div class="callout">
+                <p>Política de Calidad</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>INSTALACIONES SAMAVE SL mantiene un vínculo constante con la calidad, adquiriendo para ello, los compromisos siguientes:</p>
+            <ul class="check">
+                <li>El cumplimiento de los requisitos, explícitos e implícitos, de los clientes y otras partes interesadas, así como los legales y reglamentarios, y otros que se suscriban.</li>
+                <li>La mejora continua de los procesos, procedimientos y servicios, mediante el establecimiento de dicho sistema</li>
+            </ul><br>
+
+                    <p>Todo esto se concentra en los siguientes puntos de actuación:</p>
+            <ul>
+                <li>Impulsar la idea de cercanía y confianza, para que el cliente la perciba continuamente</li>
+                <li>La calidad es responsabilidad de todos.</li>
+                <li>Somos una organización flexible y puntera en la aplicación de las nuevas tecnologías, que nos sean demandadas.</li>
+            </ul><br>
+
+                <p>La política de calidad de INSTALACIONES SAMAVE SL es difundida a todo el personal de la organización o que trabaja en nombre, y existe un firme compromiso de la dirección para su aplicación y revisión periódica.</p>
+		<p>Gracias a esta política, ha permitido a INSTALACIONES SAMAVE SL obtener la certificación ISO 9001:2015 para los Sistemas, Equipos y Dispositivos de Protección Contra Incendios en los que centra su actividad.</p>
+		</div>
+                
+                <div class="about-image-calidad">
+                    <img src="../images/calidad1.jpg" alt="Certificado IMQ">
+                    <img src="../images/calidad2.jpg" alt="Certificado IQNET">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="contact-section">
+        <div class="contact-card">
+            <h2>Pídanos presupuesto</h2>
+            <p>Sin ningún tipo de compromiso, estaremos encantados de atenderle.</p>
+            
+            <form id="formularioContacto" action="../procesar-contacto.php" method="POST" class="inline-form">
+
+		<!-- formulario a-->
+		<div class="campo-dos" aria-hidden="true">
+			<label for="website_url">Si eres humano, deja este campo en blanco</label>
+			<input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+		</div>
+		<!-- fin formulario a-->
+
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre" required placeholder="Su nombre">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required placeholder="su@email.com">
+                </div>
+                <div class="form-group full-width">
+                    <label>Mensaje</label>
+                    <textarea name="mensaje" rows="4" required placeholder="¿Qué tipo de instalación necesita?"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Solicitar Presupuesto</button>
+            </form>
+            <div id="mensajeRespuesta" class="mensaje-alerta" style="display: none;"></div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-info">
+            <div class="location">
+                <h4>	Dónde Estamos</h4>
+                <p>	91 895 84 04 | contacto@samave.es</p>
+		<p>	Av. Comunidad de Madrid, 106</p>
+		<p>	Portal 6 (Local) - 28330</p>
+		<img onclick="window.open('https://goo.gl/maps/Gi8ZYjsyzfTFRY7t7')" src="../images/iconMap.png" style="cursor: pointer; margin-bottom: -7px;margin-left: 13px;width: 22px;">
+                <p>	San Martín de la Vega - Madrid</p>
+            </div>
+	<div class_"apiem">
+		<img src="../images/apiem.jpg" style="cursor: pointer; margin-bottom: -7px;margin-left: 13px;width: 220px;">
+	</div>
+            <div class="legal-links">
+                <a href="../legal/aviso.html">	Aviso Legal</a>
+		<a href="../legal/politica.html">	Politica de Privacidad</a>
+		<a href="../legal/condiciones.html">	Condiciones de Uso de la Web</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica del menú móvil
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('nav-active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Lógica del formulario (AJAX)
+        document.getElementById('formularioContacto').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.btn-submit');
+            const res = document.getElementById('mensajeRespuesta');
+            btn.disabled = true;
+            btn.innerText = "Enviando...";
+
+            fetch(this.action, { method: 'POST', body: new FormData(this) })
+            .then(r => r.text())
+            .then(data => {
+                res.style.display = 'block';
+                res.style.backgroundColor = '#d4edda';
+                res.style.color = '#155724';
+                res.style.padding = '15px';
+                res.innerHTML = "¡Mensaje enviado con éxito! Le contactaremos pronto.";
+                this.reset();
+                btn.disabled = false;
+                btn.innerText = "Solicitar Presupuesto";
+            })
+            .catch(() => {
+                res.style.display = 'block';
+                res.style.backgroundColor = '#f8d7da';
+                res.style.color = '#721c24';
+                res.style.padding = '15px';
+                res.innerHTML = "Error al conectar con el servidor.";
+                btn.disabled = false;
+                btn.innerText = "Solicitar Presupuesto";
+            });
+        });
+    </script>
+</body>
+</html>
