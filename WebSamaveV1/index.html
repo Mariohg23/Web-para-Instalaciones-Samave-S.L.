@@ -34,13 +34,13 @@
                 <img src="images/slide1.jpg" alt="Instalaciones Electricas en General">
                 <div class="slide-caption">
                     <h3>Proyectos Integrales</h3>
-                    <p>Soluciones de baja/media potencia y cuadros eléctricos.</p>
+                    <p>Todo tipo de proyectos en Baja Tensión.</p>
                 </div>
             </div>
             <div class="slide">
                 <img src="images/slide2.jpg" alt="Instalación Fotovoltaica y Punto de Recarga de Vehiculo Eléctrico">
                 <div class="slide-caption">
-                    <h3>Instalaciones Solar Fotovoltaica</h3>
+                    <h3>Instalaciones Solar Fotovoltaica y Puntos de Recarga V.E.</h3>
                     <p>Eficiencia y ahorro energético.</p>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <img src="images/slide3.jpg" alt="Legalización y Boletín Eléctrico">
                 <div class="slide-caption">
                     <h3>Boletines y legalizaciones</h3>
-                    <p>Todo lo necesario para tu reforma.</p>
+                    <p>Todo lo necesario para su instalación.</p>
                 </div>
             </div>
         </div>
@@ -87,36 +87,7 @@
         </section>
     </main>
 
-    <section class="contact-section">
-        <div class="contact-card">
-            <h2>¿Hablamos de su proyecto?</h2>
-            <p>Escríbanos y le responderemos lo antes posible.</p>
-            <form id="formularioContacto" action="procesar-contacto.php" method="POST" class="inline-form">
-
-		<!-- formulario a-->
-		<div class="campo-dos" aria-hidden="true">
-			<label for="website_url">Si eres humano, deja este campo en blanco</label>
-			<input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
-		</div>
-		<!-- fin formulario a-->
-
-                <div class="form-group">
-                    <label>Nombre</label>
-                    <input type="text" name="nombre" required placeholder="Su nombre">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" required placeholder="Su@correo.com">
-                </div>
-                <div class="form-group full-width">
-                    <label>Mensaje</label>
-                    <textarea name="mensaje" rows="4" required placeholder="¿En qué podemos ayudarle?"></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Enviar Mensaje</button>
-            </form>
-            <div id="mensajeRespuesta" class="mensaje-alerta" style="display: none;"></div>
-        </div>
-    </section>
+    
 
     <footer class="site-footer">
         <div class="footer-info">
@@ -173,36 +144,11 @@
             mostrarSlide(indiceSlideActual + direccion);
         }
 
-        // Hace que el carrusel pase de foto automáticamente cada 5 segundos
+        // movimiento carrousel
         setInterval(() => {
             moverCarrusel(1);
         }, 5000);
 
-        // FORMULARIO AJAX
-        document.getElementById('formularioContacto').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('.btn-submit');
-            const res = document.getElementById('mensajeRespuesta');
-            btn.disabled = true;
-            btn.innerText = "Enviando...";
-
-            fetch(this.action, { method: 'POST', body: new FormData(this) })
-            .then(r => r.text())
-            .then(data => {
-                res.style.display = 'block';
-                res.className = 'mensaje-alerta exito';
-                res.innerHTML = data;
-                this.reset();
-                btn.disabled = false;
-                btn.innerText = "Enviar Mensaje";
-            })
-            .catch(() => {
-                res.style.display = 'block';
-                res.className = 'mensaje-alerta error';
-                res.innerHTML = "Error al conectar.";
-                btn.disabled = false;
-            });
-        });
     </script>
 </body>
 </html>
